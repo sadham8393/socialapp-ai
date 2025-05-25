@@ -106,7 +106,7 @@ const SocialFormWizard: React.FC<SocialFormWizardProps> = ({ countries }) => {
         <Paper
           elevation={3}
           sx={{
-            width: { xs: "100%", sm: 500 },
+            width: { xs: "100%", sm: "75%" },
             maxWidth: "100%",
             p: { xs: 1, sm: 3 },
             boxSizing: "border-box",
@@ -120,6 +120,7 @@ const SocialFormWizard: React.FC<SocialFormWizardProps> = ({ countries }) => {
               minHeight: "unset",
               p: 1,
               borderRadius: 0,
+              width: "100%",
             },
             "& .MuiStepConnector-root": {
               left: i18n.dir() === "rtl" ? "calc(50% + 20px)" : "calc(-50% + 20px)",

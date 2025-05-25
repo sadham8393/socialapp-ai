@@ -55,7 +55,17 @@ npm run dev:all
 
 > The frontend is configured to proxy `/api/ai-suggest` requests to the backend.
 
-### 4. Linting and Formatting
+### 4. Start the Backend Server from the New Location
+
+To start the backend server separately, use the following command:
+
+```bash
+node server/ai-suggest-server.js
+```
+
+- The `.env` file for the server should be placed in the `server/` folder. See `server/.env.example` for the required format.
+
+### 5. Linting and Formatting
 
 To check and fix code style:
 
