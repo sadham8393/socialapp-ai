@@ -44,5 +44,17 @@
   "helpMeWritePromptReason": "يرجى كتابة سبب موجز للتقديم على الدعم الاجتماعي الحكومي.",
   "errorUnauthorized": "مفتاح OpenAI API مفقود أو غير صالح. يرجى التحقق من الإعدادات.",
   "errorRateLimit": "لقد وصلت إلى حد الطلبات. يرجى الانتظار والمحاولة لاحقًا.",
-  "errorTimeout": "انتهت مهلة الطلب. يرجى التحقق من الاتصال والمحاولة مرة أخرى."
+  "errorTimeout": "انتهت مهلة الطلب. يرجى التحقق من الاتصال والمحاولة مرة أخرى.",
+  "fullNameIsRequired": "الاسم الكامل مطلوب.",
+  "nationalIdIsRequired": "الرقم القومي مطلوب.",
+  "dateOfBirthIsRequired": "تاريخ الميلاد مطلوب.",
+  "genderIsRequired": "الجنس مطلوب.",
+  "addressIsRequired": "العنوان مطلوب.",
+  "countryIsRequired": "الدولة مطلوبة.",
+  "phoneIsRequired": "رقم الهاتف مطلوب.",
+  "emailIsRequired": "البريد الإلكتروني مطلوب.",
+  "cityIsRequired": "المدينة مطلوبة.",
+  "stateIsRequired": "المحافظة مطلوبة.",
+  "dateOfBirthPlaceholder": "يوم-شهر-سنة",
+  "form_submitted_successfully": "تم إرسال طلبك بنجاح!"
 }

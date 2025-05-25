@@ -5,12 +5,15 @@ import { getFormSteps } from "./constants";
 
 // Remove useTranslation from this file. Instead, export a function to get step configs with t injected.
 
-export const getFormStepConfigs = (t: (key: string) => string) => {
+export const getFormStepConfigs = (
+  t: (key: string) => string,
+  countries: { name: string; code: string }[]
+) => {
   const formSteps = getFormSteps(t);
   return [
     {
       label: formSteps[0],
-      component: <PersonalInfoForm />,
+      component: <PersonalInfoForm countries={countries} />,
     },
     {
       label: formSteps[1],

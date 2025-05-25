@@ -1,13 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Provider } from "react-redux";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import FormWizard from "./pages/FormWizard";
+import Header from "./components/AppHeader";
+import AppFooter from "./components/AppFooter";
 import { store } from "./redux/store";
+import AppRoutes from "./routes";
+import { useCountries } from "./hooks/useCountries";
 
 const App = () => {
     const { i18n } = useTranslation();
+    const countries = useCountries();
+
     return (
         <Provider store={store}>
             <Router>
@@ -20,15 +24,10 @@ const App = () => {
                     dir={i18n.dir()}
                 >
                     <Header />
-
                     <main style={{ flex: 1 }}>
-                        <Routes>
-                            <Route path="/" element={<FormWizard />} />
-                            {/* Add more routes here as needed */}
-                        </Routes>
+                        <AppRoutes countries={countries} />
                     </main>
-
-                    <Footer />
+                    <AppFooter />
                 </div>
             </Router>
         </Provider>

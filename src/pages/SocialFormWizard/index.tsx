@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Stepper,
@@ -6,13 +6,29 @@ import {
   StepLabel,
   Paper,
 } from "@mui/material";
-import { FormProvider, useForm, FieldValues } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { getFormStepConfigs } from "./formStepConfigs";
 import AppButton from "../../components/AppButton";
+import Toast from "../../components/AppToast";
 
-// Initial form values
-const initialForm = {
+// Initial form values type
+export type FormValues = {
+  name: string;
+  nationalId: string;
+  dob: string;
+  gender: string;
+  address: string;
+  city: string;
+  state: string;
+  phone: string;
+  email: string;
+  currentFinancialSituation: string;
+  employmentCircumstances: string;
+  reasonForApplying: string;
+};
+
+const initialForm: FormValues = {
   name: "",
   nationalId: "",
   dob: "",
@@ -20,20 +36,25 @@ const initialForm = {
   address: "",
   city: "",
   state: "",
-  country: "",
   phone: "",
   email: "",
-  info1: "",
-  info2: "",
-  info3: "",
+  currentFinancialSituation: "",
+  employmentCircumstances: "",
+  reasonForApplying: "",
 };
 
-function FormWizard() {
-  const [step, setStep] = useState(0);
-  const methods = useForm<FieldValues>({ defaultValues: initialForm, mode: "onTouched" });
+interface SocialFormWizardProps {
+  countries: { name: string; code: string }[];
+}
+
+const SocialFormWizard: React.FC<SocialFormWizardProps> = ({ countries }) => {
+  const [step, setStep] = useState<number>(0);
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastMsg, setToastMsg] = useState("");
+  const methods = useForm<FormValues>({ defaultValues: initialForm, mode: "onTouched" });
   const { reset, getValues, handleSubmit, trigger, formState } = methods;
   const { t, i18n } = useTranslation();
-  const FORM_STEP_CONFIGS = getFormStepConfigs(i18n.t);
+  const FORM_STEP_CONFIGS: { label: string; component: React.ReactNode }[] = getFormStepConfigs(t, countries);
 
   // Load saved form progress from localStorage
   useEffect(() => {
@@ -57,6 +78,8 @@ function FormWizard() {
 
   // Handle form submission
   const onSubmit = () => {
+    setToastMsg(t("form_submitted_successfully"));
+    setToastOpen(true);
     setTimeout(() => {
       localStorage.removeItem("form-progress");
       reset(initialForm);
@@ -72,24 +95,54 @@ function FormWizard() {
         alignItems="center"
         justifyContent="center"
         minHeight="60vh"
-        py={4}
+        py={{ xs: 2, sm: 4 }}
+        px={{ xs: 0.5, sm: 0 }}
+        width="100%"
         aria-label="Application Form Wizard"
         role="form"
         tabIndex={0}
         aria-live="polite"
       >
-        <Paper elevation={3} sx={{
-          width: "100%", maxWidth: 500, p: 3,
-
-          "& .MuiStepConnector-root": {
-            left: i18n.dir() === "rtl" ? "calc(50% + 20px)" : "calc(-50% + 20px)",
-            right: i18n.dir() === "rtl" ? "calc(-50% + 20px)" : "calc(50% + 20px)",
-          }
-        }}>
+        <Paper
+          elevation={3}
+          sx={{
+            width: { xs: "100%", sm: 500 },
+            maxWidth: "100%",
+            p: { xs: 1, sm: 3 },
+            boxSizing: "border-box",
+            mx: { xs: 0, sm: "auto" },
+            borderRadius: { xs: 0, sm: 2 },
+            minHeight: { xs: "auto", sm: 500 },
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            "@media (max-width: 600px)": {
+              minHeight: "unset",
+              p: 1,
+              borderRadius: 0,
+            },
+            "& .MuiStepConnector-root": {
+              left: i18n.dir() === "rtl" ? "calc(50% + 20px)" : "calc(-50% + 20px)",
+              right: i18n.dir() === "rtl" ? "calc(-50% + 20px)" : "calc(50% + 20px)",
+            },
+          }}
+        >
           <Stepper
             activeStep={step}
-            alternativeLabel
-            sx={{ mb: 4 }}
+            alternativeLabel={window.innerWidth >= 600}
+            orientation={window.innerWidth < 600 ? "vertical" : "horizontal"}
+            sx={{
+              mb: 4,
+              width: "100%",
+              "& .MuiStepLabel-label": {
+                fontSize: { xs: "0.95rem", sm: "1.1rem" },
+                whiteSpace: "pre-line",
+                textAlign: "center",
+              },
+              "& .MuiStepIcon-root": {
+                fontSize: { xs: 20, sm: 24 },
+              },
+            }}
             role="progressbar"
             aria-valuenow={step + 1}
             aria-valuemin={1}
@@ -107,7 +160,13 @@ function FormWizard() {
               {FORM_STEP_CONFIGS[step].label}
             </h2>
             {FORM_STEP_CONFIGS[step].component}
-            <Box display="flex" justifyContent="space-between" mt={4} gap={2}>
+            <Box
+              display="flex"
+              flexDirection={{ xs: "column", sm: "row" }}
+              justifyContent="space-between"
+              mt={4}
+              gap={2}
+            >
               <AppButton
                 variant="outlined"
                 onClick={prevStep}
@@ -145,10 +204,16 @@ function FormWizard() {
               )}
             </Box>
           </form>
+          <Toast
+            open={toastOpen}
+            message={toastMsg}
+            severity="success"
+            onClose={() => setToastOpen(false)}
+          />
         </Paper>
       </Box>
     </FormProvider>
   );
 }
 
-export default FormWizard;
+export default SocialFormWizard;

@@ -44,5 +44,17 @@
   "errorTimeout": "The request timed out. Please check your connection and try again.",
   "currentFinancialSituationIsRequired": "Current financial situation is required.",
   "employmentCircumstancesIsRequired": "Employment circumstances are required.",
-  "reasonForApplyingIsRequired": "Reason for applying is required."
+  "reasonForApplyingIsRequired": "Reason for applying is required.",
+  "fullNameIsRequired": "Full name is required.",
+  "nationalIdIsRequired": "National ID is required.",
+  "dateOfBirthIsRequired": "Date of birth is required.",
+  "genderIsRequired": "Gender is required.",
+  "addressIsRequired": "Address is required.",
+  "countryIsRequired": "Country is required.",
+  "phoneIsRequired": "Phone number is required.",
+  "emailIsRequired": "Email is required.",
+  "cityIsRequired": "City is required.",
+  "stateIsRequired": "State is required.",
+  "dateOfBirthPlaceholder": "dd-mm-yyyy",
+  "form_submitted_successfully": "Your application has been submitted successfully!"
 }
