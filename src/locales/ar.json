@@ -56,5 +56,6 @@
   "cityIsRequired": "المدينة مطلوبة.",
   "stateIsRequired": "المحافظة مطلوبة.",
   "dateOfBirthPlaceholder": "يوم-شهر-سنة",
-  "form_submitted_successfully": "تم إرسال طلبك بنجاح!"
+  "form_submitted_successfully": "تم إرسال طلبك بنجاح!",
+  "selectLanguage": "اختر اللغة"
 }

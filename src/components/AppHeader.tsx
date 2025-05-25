@@ -22,7 +22,7 @@ const AppHeader = () => {
         sx={{
           textAlign: "center",
           fontSize: { xs: 13, sm: 16 },
-          color: "text.secondary",
+          color: "var(--header-subtitle-color, #374151)",
           px: 2,
           wordBreak: "break-word",
         }}
@@ -42,10 +42,11 @@ const AppHeader = () => {
         <select
           value={i18n.language}
           onChange={(e) => i18n.changeLanguage(e.target.value)}
-          aria-label={t("selectLanguage") || "Select language"}
+          aria-label={t("selectLanguage")}
           style={{
             fontWeight: "bold",
-            background: "#fff",
+            background: "var(--header-select-bg, #fff)",
+            color: "var(--header-select-color, #222)",
             border: "1px solid #000",
             borderRadius: 4,
             cursor: "pointer",

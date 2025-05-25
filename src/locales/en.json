@@ -56,5 +56,6 @@
   "cityIsRequired": "City is required.",
   "stateIsRequired": "State is required.",
   "dateOfBirthPlaceholder": "dd-mm-yyyy",
-  "form_submitted_successfully": "Your application has been submitted successfully!"
+  "form_submitted_successfully": "Your application has been submitted successfully!",
+  "selectLanguage": "Select language"
 }

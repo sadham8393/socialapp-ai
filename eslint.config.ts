@@ -48,7 +48,12 @@ export default [
         document: true,
         localStorage: true,
         setTimeout: true,
-        URLSearchParams: true,
+        describe: true,
+        it: true,
+        expect: true,
+        beforeEach: true,
+        afterEach: true,
+        jest: true,
       },
     },
     plugins: {
