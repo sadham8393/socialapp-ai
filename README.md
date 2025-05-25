@@ -84,6 +84,55 @@ To keep your OpenAI API key secure, all AI-powered suggestion requests are route
 
 > Never put your OpenAI API key directly in frontend code or expose it in public repositories. Always use a backend proxy for production applications.
 
+## Test Cases
+
+### Overview
+This project includes comprehensive test cases for the `SocialFormWizard` and its subcomponents to ensure functionality, accessibility, and internationalization (i18n). The test cases cover the following components:
+
+- **FamilyFinancialInfoForm**: Validates required fields, renders all fields, and handles i18n-aware error messages.
+- **SituationDescriptionsForm**: Tests rendering of all fields, error handling, and the "Help Me Write" functionality.
+- **SocialFormWizard**: Ensures proper navigation between steps and form submission.
+
+### Running the Tests
+
+To execute the test cases, use the following command:
+
+```bash
+npm test
+```
+
+This will run all test cases and display the results in the terminal. For debugging specific tests, you can use:
+
+```bash
+npm test -- <test-file-name>
+```
+
+For example, to run tests for the `FamilyFinancialInfoForm`:
+
+```bash
+npm test -- FamilyFinancialInfoForm.test.tsx
+```
+
+### Debugging Tests
+
+- Use `screen.debug()` to inspect the DOM during test execution.
+- Ensure that all required labels and error messages are present in the localization files (`en.json` and `ar.json`).
+
+### Accessibility and i18n
+
+- All test cases validate accessibility using ARIA roles and attributes.
+- Internationalization is tested by mocking the i18n context and verifying error messages in multiple languages.
+
+### Generating a Coverage Report
+
+To generate a test coverage report, use the following command:
+
+```bash
+npm run test:coverage
+```
+
+This will create a detailed coverage report in the `coverage/` directory. Open `coverage/lcov-report/index.html` in your browser to view the report in a user-friendly format.
+
 ## Additional Notes
 
 - All environment variables are loaded using `dotenv` in the backend.
