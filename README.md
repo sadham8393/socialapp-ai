@@ -64,6 +64,16 @@ npm run lint
 npm run lint:fix
 ```
 
+## Why a Backend Server for OpenAI API?
+
+To keep your OpenAI API key secure, all AI-powered suggestion requests are routed through a backend server (`ai-suggest-server.js`). This server acts as a proxy between the frontend and OpenAI, ensuring that:
+
+- **Your API key is never exposed to the browser or end users.**
+- **Sensitive credentials remain on the server side,** protected from client-side attacks or leaks.
+- **You can add rate limiting, logging, or additional security** in one place if needed.
+
+> Never put your OpenAI API key directly in frontend code or expose it in public repositories. Always use a backend proxy for production applications.
+
 ## Additional Notes
 
 - All environment variables are loaded using `dotenv` in the backend.
