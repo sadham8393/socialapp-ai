@@ -1,0 +1,90 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build output
+/dist/
+/dist-ssr/
+
+# Local env files
+*.local
+.env
+.env.*
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# System files
+Thumbs.db
+
+# Mac system files
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# VS Code settings
+.vscode/settings.json
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Misc
+*.tgz
+
+# Yarn Integrity file
+yarn.lock
+
+# Prettier
+.prettier*
+
+# ESLint
+.eslint*
+
+# Tailwind
+.tailwind*
+
+# Output from tests
+junit.xml
+
+# Next.js
+.next/
+
+# Storybook
+storybook-static/
+
+# npm cache
+.npm/
+
+# Parcel
+.cache/
+
+# Mac system files
+.DS_Store
+
+# JetBrains IDEs
+.idea/
+
+# VS Code workspace
+*.code-workspace
